@@ -33,14 +33,14 @@ exports.Quiz = Quiz; // exportar definición de tabla Quiz
 
 // sequelize.sync() crea e inicializa tabla de preguntas en DB
 sequelize.sync().then(function() {
-Quiz.count().then(function (count){
-if (count === 0) {
-Quiz.create({ pregunta: 'hola que tal',
-respuesta: 'Roma'
-});
-Quiz.create({ pregunta: 'capital de Portugal',
-respuesta: 'Lisboa'})
-.then(function(){console.log('Base de datos iniciada')});
-};
-});
+	Quiz.count().then(function (count){
+//		if (count === 0) {
+			Quiz.create({ pregunta: 'hola que tal',
+				respuesta: 'Roma'
+		});
+			Quiz.create({ pregunta: 'capital de Portugal',
+				respuesta: 'Lisboa'})
+		.then(function(){console.log('Base de datos iniciada')});
+//		};
+	});
 });

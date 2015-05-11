@@ -29,7 +29,7 @@ exports.show = function(req, res){
 
 // GET /quizes/:id/answer
 exports.answer = function(req, res){
-	if(req.query.respuesta.toLowerCase() === req.quiz.respuesta){
+	if(req.query.respuesta.toLowerCase() === quiz.respuesta){
 		res.render('quizes/answer', {quiz: req.quiz, respuesta: 'correcta'});
 	}else{
 		res.render('quizes/answer', {quiz: req.quiz, respuesta: 'incorrecta'});

@@ -18,8 +18,4 @@ router.get('/quizes/:quizId(\\d+)', quizController.show);
 router.get('/quizes/:quizId(\\d+)/answer', quizController.answer);
 router.get('/creditos/:quizId(\\d+)/author', quizController.author);
 
-//router.get('/quizes/question', quizController.question);
-//router.get('/quizes/answer', quizController.answer);
-//router.get('/creditos/author', quizController.author);
-
 module.exports = router;

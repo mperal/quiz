@@ -9,7 +9,7 @@ exports.load = function(req, res, next, quizId) {
 				next();
 			} else{ next(new Error('No existe quizId=' + quizId));}
 		}
-	).catch(function(error){next(error)});
+	).catch(function(error){next(error);});
 };
 
 
@@ -29,7 +29,7 @@ exports.show = function(req, res){
 
 // GET /quizes/:id/answer
 exports.answer = function(req, res){
-	if(req.query.respuesta.toLowerCase() === quiz.respuesta){
+	if(req.query.respuesta === req.quiz.respuesta){
 		res.render('quizes/answer', {quiz: req.quiz, respuesta: 'correcta'});
 	}else{
 		res.render('quizes/answer', {quiz: req.quiz, respuesta: 'incorrecta'});

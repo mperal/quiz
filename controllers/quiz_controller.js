@@ -30,15 +30,14 @@ exports.show = function(req, res){
 // GET /quizes/:id/answer
 exports.answer = function(req, res){
 	if(req.query.respuesta === req.quiz.respuesta){
-		res.render('quizes/answer', {quiz: req.quiz, respuesta: 'correcta'});
+		res.render('quizes/answer.ejs', {quiz: req.quiz, respuesta: 'correcta'});
 	}else{
-		res.render('quizes/answer', {quiz: req.quiz, respuesta: 'incorrecta.'});
+		res.render('quizes/answer.ejs', {quiz: req.quiz, respuesta: 'incorrecta.'});
 	}
 	
 };
 
 // GET /creditos/author
 exports.author = function(req, res){
-	res.render('author', {quiz: req.quiz});
-	
+	res.render('author.ejs', {quiz: req.quiz});
 };

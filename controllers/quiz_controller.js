@@ -29,16 +29,16 @@ exports.show = function(req, res){
 
 // GET /quizes/:id/answer
 exports.answer = function(req, res){
-	if(req.query.respuesta === req.quiz.respuesta){
+	if(req.query.respuesta.toLowerCase() === req.quiz.respuesta){
 		res.render('quizes/answer', {quiz: req.quiz, respuesta: 'correcta'});
 	}else{
-		res.render('quizes/answer', {quiz: req.quiz, respuesta: 'incorrecta'});
+		res.render('quizes/answer', {quiz: req.quiz, respuesta: 'incorrecta.'});
 	}
 	
 };
 
 // GET /creditos/author
 exports.author = function(req, res){
-	res.render('author', {quiz: req.quiz});
+	res.render('creditos/author', {quiz: req.quiz});
 	
 };

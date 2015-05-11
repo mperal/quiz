@@ -39,6 +39,6 @@ exports.answer = function(req, res){
 
 // GET /creditos/author
 exports.author = function(req, res){
-	res.render('creditos/author', {quiz: res.quiz, nombre: 'Maria Peral'});
+	res.render('creditos/author', {quiz: res.quiz});
 	
 };

@@ -9,7 +9,7 @@ exports.load = function(req, res, next, quizId) {
 				next();
 			} else{ next(new Error('No existe quizId=' + quizId))}
 		}
-	).catch(function(error){next(error);});
+	).catch(function(error){next(error)});
 };
 
 
@@ -30,7 +30,7 @@ exports.index = function(req, res){
 
 // GET /quizes/:id
 exports.show = function(req, res){
-	res.render('quizes/show.ejs', {quiz: req.quiz});
+	res.render('quizes/show.ejs', {quiz: req.quiz, errors: []});
 };
 
 // GET /quizes/:id/answer
@@ -45,7 +45,7 @@ exports.answer = function(req, res){
 
 // GET /creditos/author
 exports.author = function(req, res){
-	res.render('author.ejs', {quiz: req.quiz});
+	res.render('author.ejs', {quiz: req.quiz, errors: []});
 };
 
 // GET /quizes/new

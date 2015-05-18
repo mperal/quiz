@@ -15,22 +15,28 @@ exports.load = function(req, res, next, quizId) {
 
 // GET /quizes
 exports.index = function(req, res){
+	console.log("en index");
 	if(req.query.search){
+		console.log("en index primer if");
 		models.Quiz.findAll({where: ["pregunta like ?", "%"+req.query.search.replace(" ","%")+"%"]}).then(
 			function(quizes){
 				res.render('quizes/index.ejs', {quizes: quizes, errors: []});
 			}
 		).catch(function(error){next(error);});
 	}else{
+		console.log("en index segundo if");
 		models.Quiz.findAll().then(function(quizes){
+			console.log("en index segundo if en models");
 			res.render('quizes/index.ejs',{quizes:quizes, errors: []});
-		}).catch(function(error){next(error);});
+		});
 	}
 };
 
 // GET /quizes/:id
 exports.show = function(req, res){
+	console.log("en show");
 	res.render('quizes/show.ejs', {quiz: req.quiz, errors: []} );
+	
 };
 
 // GET /quizes/:id/answer
@@ -45,6 +51,7 @@ exports.answer = function(req, res){
 
 // GET /creditos/author
 exports.author = function(req, res){
+	console.log("en autor");
 	res.render('author.ejs', {quiz: req.quiz, errors: []});
 };
 

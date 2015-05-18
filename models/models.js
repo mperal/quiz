@@ -1,5 +1,5 @@
 var path = require('path');
-var pg=require('pg');
+
 
 // Postgres DATABASE_URL = postgres://user:passwd@host:port/database
 // SQLite DATABASE_URL = sqlite://:@:/
@@ -26,7 +26,7 @@ var Sequelize = require('sequelize');
 //     omitNull: true    // solo Postgres
 //   }
 // );
- var sequelize = new Sequelize(null, null, null, {dialect: "sqlite", storage: "quiz.sqlite"});
+var sequelize = new Sequelize(null, null, null, {dialect: "sqlite", storage: "quiz.sqlite"});
 
 // Importar la definicion de la tabla Quiz en quiz.js
 var Quiz = sequelize.import(path.join(__dirname,'quiz'));

@@ -70,7 +70,7 @@ exports.create = function(req, res) {
 
 quiz
  .validate()
- .then(
+ 	.then(
  	function(err){
  		if (err) {
  			res.render('quizes/new', {quiz: quiz, errors: err.errors});
@@ -108,4 +108,11 @@ exports.update = function(req, res) {
  } // Redirección HTTP a lista de preguntas (URL relativo)
  }
  );
+};
+
+// DELETE /quizes/:id
+exports.destroy = function(req, res) {
+ req.quiz.destroy().then( function() {
+ res.redirect('/quizes');
+ }).catch(function(error){next(error)});
 };

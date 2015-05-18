@@ -7,7 +7,6 @@ var bodyParser = require('body-parser');
 var partials = require('express-partials');
 var methodOverride = require('method-override');
 var session = require('express-session');
-
 var routes = require('./routes/index');
 
 var app = express();
@@ -42,7 +41,17 @@ app.use(function(req, res, next) {
     next();
 });
 
-
+// logout automático tras 2 min
+app.use('/',function(req,res,next){
+    if (req.session.user) {
+        if (new Date().getTime()-req.session.user.tiempoUltimoMov>120000) {
+            delete req.session.user;
+        } else {
+            req.session.user.tiempoUltimoMov = new Date().getTime();
+        }
+    }
+    next();
+});
 
 app.use('/', routes);
 

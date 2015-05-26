@@ -6,6 +6,8 @@ body{
 	content: "Smartphone Layout";
 }
 
+.quiz_img { float: none; }
+
 h2 span, section h3{
 	display: none;
 }

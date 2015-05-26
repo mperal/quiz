@@ -16,8 +16,20 @@
     <button type="submit" onClick="return confirm('Borrar: <%= quizes[i].pregunta %>');">Borrar</button>
     </form>
   </td>
-  <% }
-} %>
+  
+
+    <% }else{%>
+    <td></td><td></td>
+    <%}%>
+<td>
+<form method="post" action="/user/<%= session.user.id %>/favourites/<%= quizes[i].id %>?_method=put">
+    <button type="submit" onClick="return confirm('¿Hacer fav?');">Hacer fav</button>
+
+<form method="post" action="/user/<%= session.user.id %>/favourites/<%= quizes[i].id %>?_method=delete">
+    <button type="submit" onClick="return confirm('¿Borrar fav?');">Borrar fav</button>
+  </td>
+  
+<%} %>
 </tr> 
 <% } %>
 </table>

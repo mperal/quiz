@@ -37,6 +37,9 @@ var Comment = sequelize.import(comment_path);
 // tabla user
 var user_path = path.join(__dirname,'user');
 var User = sequelize.import(user_path);
+// tabla favourite
+var favourite_path = path.join(__dirname,'favourite');
+var Favourite = sequelize.import(favourite_path);
 
 Comment.belongsTo(Quiz);
 Quiz.hasMany(Comment);
@@ -44,10 +47,14 @@ Quiz.hasMany(Comment);
 Quiz.belongsTo(User);
 User.hasMany(Quiz);
 
+User.belongsToMany(Quiz, {through: 'Favourite'});
+Quiz.belongsToMany(User, {through: 'Favourite'});
+
 
 exports.Quiz = Quiz; // exportar definición de tabla Quiz
 exports.Comment = Comment;
 exports.User = User;
+exports.Favourite = Favourite;
 
 // sequelize.sync() inicializa tabla de preguntas en DB
 sequelize.sync().then(function() {

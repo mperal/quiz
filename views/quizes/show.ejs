@@ -6,7 +6,15 @@
 <input type="text" name="respuesta" value="Respuesta"/>
 <input type="submit" value="Enviar">
 </form>
+<%if(session.user){%>
 
+<form method="post" action="/user/<%= session.user.id %>/favourites/<%= quiz.id %>?_method=put">
+    <button type="submit" onClick="return confirm('¿Hacer fav?');">Hacer fav</button>
+
+<form method="post" action="/user/<%= session.user.id %>/favourites/<%= quiz.id %>?_method=delete">
+    <button type="submit" onClick="return confirm('¿Borrar fav?');">Borrar fav</button>
+
+<%}%>
 <p><a href="/quizes/<%= quiz.id %>/comments/new"><button>Nuevo comentario</button></a></p>
 
 <p><strong>Comentarios:</strong></p>

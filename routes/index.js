@@ -6,6 +6,7 @@ var commentController = require('../controllers/comment_controller');
 var sessionController = require('../controllers/session_controller');
 var statisticsController = require('../controllers/statistics_controller');
 var userController = require('../controllers/user_controller');
+var favouritesController = require('../controllers/favourites_controller');
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -30,6 +31,9 @@ router.get('/user/:userId(\\d+)/edit', sessionController.loginRequired, userCont
 router.put('/user/:userId(\\d+)', sessionController.loginRequired,userController.ownershipRequired, userController.update); // actualizar información de cuenta
 router.delete('/user/:userId(\\d+)', sessionController.loginRequired, userController.ownershipRequired,userController.destroy); // borrar cuenta
 router.get('/user/:userId(\\d+)/quizes', quizController.index); // ver las preguntas de un usuario
+router.get('/user/:userId(\\d+)/favourites', favouritesController.index);
+router.put('/user/:userId(\\d+)/favourites/:quizId(\\d+)', favouritesController.fav);
+router.delete('/user/:userId(\\d+)/favourites/:quizId(\\d+)',favouritesController.delete);
 
 
 // Definición de rutas de /quizes
